@@ -29,6 +29,7 @@ def spielzug(ein):
         if feld[-i][ein] == " . ":
             feld[-i][ein] = player
             reihe()
+            check()
             break
 
 def eingabe():
@@ -52,11 +53,24 @@ def eingabe():
 
 def check():
     global done
-    pass
+    for i in range(6):      #check rows
+        for j in range(4):
+            if feld[i][j] == feld[i][j+1] == feld[i][j+2] == feld[i][j+3] !=" . ":
+                done = 1
+                return done
+    for t in range(7):
+        for r in range(3):
+            if feld[r][t] == feld[r+1][t] == feld[r+2][t] == feld[r+3][t] != " . ":
+                done = 1
+                return done
+
+    
 
 def play():
+    global done
     while done == 0:
         eingabe()
-        check()
+    reihe()
+    print(f"Spieler {player} gewinnt.")
 
 play()
