@@ -63,7 +63,7 @@ def check():
             if feld[r][t] == feld[r+1][t] == feld[r+2][t] == feld[r+3][t] != " . ":
                 done = 1
                 return done
-
+  
     
 
 def play():
