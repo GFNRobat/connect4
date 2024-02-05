@@ -63,14 +63,31 @@ def check():
             if feld[r][t] == feld[r+1][t] == feld[r+2][t] == feld[r+3][t] != " . ":
                 done = 1
                 return done
-  
-    
+    for m in range(7):
+        for n in range(6):
+            if m>2 and n<3:
+                if feld[n][m] == feld[n+1][m-1] == feld[n+2][m-2] == feld[n+3][m-3] != " . ":
+                    done = 1
+                    return done
+            elif m<4 and n>2:
+                if feld[n][m] == feld[n-1][m+1] == feld[n-2][m+2] == feld[n-3][m+3] != " . ":
+                    done = 1
+                    return done  
+            elif m>2 and n>2:
+                if feld[n][m] == feld[n-1][m-1] == feld[n-2][m-2] == feld[n-3][m-3] != " . ":
+                    done = 1
+                    return done  
+            elif m<4 and n<3:
+                if feld[n][m] == feld[n+1][m+1] == feld[n+2][m+2] == feld[n+3][m+3] != " . ":
+                    done = 1
+                    return done      
 
 def play():
     global done
     while done == 0:
         eingabe()
     reihe()
+    draw(feld)
     print(f"Spieler {player} gewinnt.")
 
 play()
